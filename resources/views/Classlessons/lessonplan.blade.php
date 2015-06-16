@@ -7,12 +7,12 @@
 </div>
 <div>
 <video id="video" width="400" controls>
-  <source src="uploads/{{$learns['vid']}}.webm">
+  <source src="../uploads/{{$learns['vid']}}.webm">
 </video>
 </div>
     <div>
 <audio id="audio" width="400" controls>
-    <source src="uploads/{{$learns['aud']}}.wav"></source>
+    <source src="../uploads/{{$learns['aud']}}.wav"></source>
 </audio>
     </div>
         <div>
@@ -41,7 +41,8 @@
         <h3>Lesson:</h3>
             <p>{{$learns['less']}}</p>
         </div>
-            <div><a href="{{ URL::to('Classlessons/index')}}">Back</a>
+            <div><a href="{{ URL::to('Classlessons/lessons')}}">Back</a>
             </div>
     </div>
+    
     @endsection

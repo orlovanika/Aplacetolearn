@@ -10,7 +10,7 @@
    
 
       <h2>Lessons:</h2>
-      <h3><a href="{{url('Classlessons', $le->id)}}">{{$le->Title}}</a></h3>
+      <h3><a href="{{url('Classlessons/lessonplan', $le->id)}}">{{$le->Title}}</a></h3>
     </div>
 </div>
    

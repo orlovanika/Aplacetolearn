@@ -41,14 +41,26 @@ class LessonsController extends Controller{
                 }
     }
     
-    public function show($id){
- if ((Auth::user()->role)=='student'){    
+       public function lessonplan($id){
+         if ((Auth::user()->role)=='student'){    
     
-        $learns=Classlessons::find($id);
-        return view('Classlessons.show')->with('learns', $learns);
- }         
+   $learns=Classlessons::find($id);
+        return view('Classlessons.lessonplan')->with('learns', $learns);
+         }
+          
     }
     
+    
+    public function show($id){
+         if ((Auth::user()->role)=='teacher'){    
+    
+   $learns=Classlessons::find($id);
+        return view('Classlessons.show')->with('learns', $learns);
+         }
+          
+    }
+    
+  
     public function create(){
                     if ((Auth::user()->role)=='teacher'){    
 

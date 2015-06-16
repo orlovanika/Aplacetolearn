@@ -1,10 +1,12 @@
 @extends('app')
 
 @section('content')
-
 <div>
      <p><a href="{{ url('Classlessons' , 'create') }}">Add Item</a></p>
     </div>
+<div class="container">
+
+
 @foreach($learn as $le)
    
     <div>
@@ -20,7 +22,8 @@
         {!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}</td>
         
       </table>
-   
+    </div>
+</div>
   
    
     
