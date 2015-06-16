@@ -10,12 +10,12 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('Classlessons/lessons','LessonsController@lessons');
+Route::get('Classlessons/lessons','LessonController@lessons');
 
-Route::get('Classlessons/lessonplan/{id}','LessonsController@lessonplan');
-Route::get('Classlessons/index','LessonsController@index');
+Route::get('Classlessons/lessonplan/{id}','LessonController@lessonplan');
+Route::get('Classlessons/index','LessonController@index');
 
-Route::resource('Classlessons', 'LessonsController');
+Route::resource('Classlessons', 'LessonController');
 
 
 

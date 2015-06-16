@@ -384,10 +384,10 @@ var fileName;
         
 
             </script>
-     
+     <script>alert('hello');</script>
 
 <div>
-    {!! Form::open(['url'=>'Classlessons']) !!}
+    {!! Form::open(array('route'=>'Classlessons.store')) !!}
     <div>
         {!! Form::label('Title', 'Title: ') !!}
         {!! Form::text('Title',null  ) !!}

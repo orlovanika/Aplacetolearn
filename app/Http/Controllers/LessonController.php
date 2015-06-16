@@ -11,7 +11,7 @@ use Auth;
 
 
 
-class LessonsController extends Controller{
+class LessonController extends Controller{
     public function __construct()
 	{
 		$this->middleware('auth');
