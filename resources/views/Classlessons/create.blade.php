@@ -384,7 +384,6 @@ var fileName;
         
 
             </script>
-     <script>alert('hello');</script>
 
 <div>
     {!! Form::open(array('route'=>'Classlessons.store')) !!}
