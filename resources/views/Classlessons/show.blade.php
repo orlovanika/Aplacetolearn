@@ -1,27 +1,46 @@
+@extends('app')
+
+@section('content')
+    <div class="container">
 <div>
-    <h3>{{$lessons->Title}}</h3>
+    <h3>{{$learns['Title']}}</h3>
 </div>
 <div>
-<video width="400" controls>
-  <source src="uploads/{{$lessons->vid}}.wav" type="video/wav">
+<video id="video" width="400" controls>
+  <source src="uploads/{{$learns['vid']}}.webm" type="video">
 </video>
 </div>
     <div>
-<audio width="400" controls>
-    <source src="uploads/{{$lessons->aud}}.webm"></source>
+<audio id="audio" width="400" controls>
+    <source src="uploads/{{$learns['aud']}}.wav"></source>
 </audio>
     </div>
         <div>
-            <button id="start">Start</button>
+            <button id="play">Play</button>
             <button id="pause">Pause</button>
         </div>
-        <div>
-            <p>{{$lessons->less}}</p>
-        </div>
-            <div>
-            {!! link_to_route('Classlessons.index', 'Back') !!}
-            </div>
-                
-                <script>
+            <script>
+                var playBtn = document.getElementById("play");
+                var stopBtn = document.getElementById('pause');
+
+                var playtog = function () {
+                audio.play();
+                video.play();
+            
+            };
                     
-                </script>
+                    var pausetog = function () {
+                        audio.pause();
+                        video.pause();
+                    };
+                
+                playBtn.addEventListener('click', playtog, false);
+                stopBtn.addEventListener('click', pausetog, false);
+              </script>
+        <div>
+            <p>{{$learns['less']}}</p>
+        </div>
+            <div><a href="{{ URL::to('Classlessons/lessons')}}">Back</a>
+            </div>
+    </div>
+    @endsection

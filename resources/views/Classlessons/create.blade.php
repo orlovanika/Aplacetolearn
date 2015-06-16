@@ -1,4 +1,6 @@
+@extends('app')
 
+@section('content')
 {!! Html::script('node_modules/recordrtc/RecordRTC.js')!!}
 
 {!! Html::script('http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js') !!}
@@ -11,6 +13,7 @@
 @endif
    
    
+   <div class="container">
    <div>
                    <section class="experiment">
                <video id="preview" controls style="border: 1px solid rgb(15, 158, 238); height: 240px; width: 320px;"></video>
@@ -408,10 +411,13 @@ var fileName;
         </div>
         <div>
             {!! Form::submit('Submit Lesson') !!}
-            {!! link_to_route('Classlessons.index', 'Cancel') !!}
+            <a href="{{ URL::to('Classlessons/index')}}">Cancel</a>
         </div>
         
         <div>
             {!! Form::close() !!}
         </div>
 </div>
+   </div>
+                
+@endsection

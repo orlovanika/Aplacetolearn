@@ -1,35 +1,64 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Classlessons; //this is the model
+use Validator;
 use Input;
 use Redirect;
 use Illuminate\Http\Request;
+use Auth;
+
 
 
 class LessonsController extends Controller{
-    
+    public function __construct()
+	{
+		$this->middleware('auth');
+	}
+       
     public function index(){
-        
+                if ((Auth::user()->role)=='teacher'){    
+    
         
         $learn=Classlessons::all();
         $learn->toarray();
         return view('Classlessons.index')->with('learn', $learn);
         
+                }
+    }
+    
+     
+    
+     public function lessons(){
+                if ((Auth::user()->role)=='student'){    
+    
         
+        $learn=Classlessons::all();
+        $learn->toarray();
+        return view('Classlessons.lessons')->with('learn', $learn);
+        
+                }
     }
     
     public function show($id){
-        $lessons=Classlessons::find($id);
-        return view('Classlessons.show')->with('lessons', $lessons);
+ if ((Auth::user()->role)=='student'){    
+    
+        $learns=Classlessons::find($id);
+        return view('Classlessons.show')->with('learns', $learns);
+ }         
     }
     
     public function create(){
+                    if ((Auth::user()->role)=='teacher'){    
+
         return view('Classlessons.create');
+                    }
     }
     
     public function store(Request $request){
-        
+                    if ((Auth::user()->role)=='teacher'){    
+
         $this->validate($request,
                         [
                             'less'=>'required |min:100',
@@ -40,29 +69,35 @@ class LessonsController extends Controller{
                         );
         $inputs=$request->all();
         Classlessons::create($inputs);
-        return Redirect('Classlessons');
-        
+         return redirect()->back();
+                    }
     }
     
     public function edit($id){
+                    if ((Auth::user()->role)=='teacher'){    
+
         $lessons=Classlessons::find($id);
         if(is_null($lessons))
            {
-            return Redirect::route('Classlessons');
+            return Redirect::route('Classlessons/index');
            }
            return view('Classlessons.edit')->with('lessons',$lessons);
+                    }
     }
     
     public function update($id)
     {
-        $inputs=Classlessons::all($id);
-        $validation= Validator::make($inputs, lessons::$rules);
+                    if ((Auth::user()->role)=='teacher'){    
+
+        $inputs=Input::all();
+        $validation= Validator::make($inputs, Classlessons::$rules);
         if($validation->passes())
         {
             $lessons=Classlessons::find($id);
             $lessons->update($inputs);
             return Redirect::route('Classlessons.index')
         ->withInput()
+        ->withErrors($validation)
         ->with('message','Success');
             
         }
@@ -70,14 +105,18 @@ class LessonsController extends Controller{
     ->withInput()
     ->withErrors($validation)
     ->with('message','error');
+                    }
     }
     
     public function destroy($id)
     {
+                    if ((Auth::user()->role)=='teacher'){    
+
        Classlessons::find($id)->delete();
-       return Redirect('Classlessons')
+       return Redirect('Classlessons/index')
     ->withInput()
     ->with('message','Deleted');
+                    }
     }
 }
 

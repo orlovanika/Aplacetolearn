@@ -1,4 +1,6 @@
+@extends('app')
 
+@section('content')
 
 <div>
      <p><a href="{{ url('Classlessons' , 'create') }}">Add Item</a></p>
@@ -15,12 +17,12 @@
                 array('class' => 'btn btn-warning')) !!}</td>
               <td>   {!! Form::open(array('method'=> 'DELETE', 'route' =>
               array('Classlessons.destroy', $le->id))) !!} 
-        {!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}
+        {!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}</td>
         
       </table>
    
   
    
     
-    
+    @endsection
 @endforeach

@@ -1,3 +1,7 @@
+    @extends('app')
+
+@section('content')
+    
     @if($errors->any())
         @foreach($errors->all() as $err)
             <li>{{$err}}</li>
@@ -5,12 +9,13 @@
 @endif
     
     
-    <div>
+    <div class="container">
         {!! Form::model($lessons, array('method' => 'PATCH','route' =>array('Classlessons.update', $lessons->id))) !!}
          <div>
         {!! Form::label('Title', 'Title: ') !!}
         {!! Form::text('Title',null  ) !!}
     </div>
+        
          <div>
         
             {!! Form::label('less', 'Lesson: ') !!}
@@ -18,7 +23,8 @@
         </div>
              <div>
                 {!! Form::submit('Update') !!}
-                {!! link_to_route('Classlessons.index', 'Cancel', $lessons->id ) !!}
+                <a href="{{ URL::to('Classlessons/index')}}">Cancel</a>
             </div>
         {!! Form::close() !!}
     </div>
+    @endsection
