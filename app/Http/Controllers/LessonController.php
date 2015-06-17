@@ -100,20 +100,23 @@ class LessonController extends Controller{
     public function update($id)
     {
                     if ((Auth::user()->role)=='teacher'){    
-
+        $rules=array(
+          'Title'=>'required',
+          'less'=>'required'
+        );
         $inputs=Input::all();
-        $validation= Validator::make($inputs, Classlessons::$rules);
+        $validation= Validator::make($inputs,$rules);
         if($validation->passes())
         {
             $lessons=Classlessons::find($id);
             $lessons->update($inputs);
-        return Redirect('Classlessons/index')
+        return Redirect::route('Classlessons.index')
         ->withInput()
         ->withErrors($validation)
         ->with('message','Success');
             
         }
-        return Redirect('Classlessons.edit', $id)
+        return Redirect::route('Classlessons.edit', $id)
     ->withInput()
     ->withErrors($validation)
     ->with('message','error');
