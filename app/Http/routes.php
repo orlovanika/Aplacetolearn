@@ -11,6 +11,7 @@
 |
 */
 Route::get('Classlessons/lessons','LessonController@lessons');
+Route::post('Classlessons/store','LessonController@store');
 
 Route::get('Classlessons/lessonplan/{id}','LessonController@lessonplan');
 Route::get('Classlessons/index','LessonController@index');

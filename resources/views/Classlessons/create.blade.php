@@ -386,7 +386,7 @@ var fileName;
             </script>
 
 <div>
-    {!! Form::open(array('route'=>'Classlessons.store')) !!}
+    {!! Form::open(array('url'=>'Classlessons/store')) !!}
     <div>
         {!! Form::label('Title', 'Title: ') !!}
         {!! Form::text('Title',null  ) !!}

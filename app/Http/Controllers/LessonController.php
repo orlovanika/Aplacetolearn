@@ -81,7 +81,7 @@ class LessonController extends Controller{
                         );
         $inputs=$request->all();
         Classlessons::create($inputs);
-         return redirect()->back();
+       return Redirect('Classlessons/index');
                     }
     }
     
@@ -107,7 +107,7 @@ class LessonController extends Controller{
         {
             $lessons=Classlessons::find($id);
             $lessons->update($inputs);
-            return Redirect::route('Classlessons.index')
+        return Redirect('Classlessons/index')
         ->withInput()
         ->withErrors($validation)
         ->with('message','Success');
