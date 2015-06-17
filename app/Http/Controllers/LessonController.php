@@ -103,20 +103,23 @@ class LessonController extends Controller{
         $rules=array(
           'Title'=>'required',
           'less'=>'required'
+          
         );
+  
         $inputs=Input::all();
         $validation= Validator::make($inputs,$rules);
         if($validation->passes())
         {
+            
             $lessons=Classlessons::find($id);
             $lessons->update($inputs);
-        return Redirect::route('Classlessons.index')
+        return Redirect('Classlessons/index')
         ->withInput()
         ->withErrors($validation)
         ->with('message','Success');
             
         }
-        return Redirect::route('Classlessons.edit', $id)
+        return Redirect('Classlessons/edit', $id)
     ->withInput()
     ->withErrors($validation)
     ->with('message','error');

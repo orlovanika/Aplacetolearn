@@ -15,7 +15,7 @@
         {!! Form::label('Title', 'Title: ') !!}
         {!! Form::text('Title',null  ) !!}
     </div>
-        
+      
          <div>
         
             {!! Form::label('less', 'Lesson: ') !!}

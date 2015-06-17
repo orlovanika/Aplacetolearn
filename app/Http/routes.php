@@ -10,9 +10,10 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::patch('Classlessons/update/{id}','LessonController@update');
+
 Route::get('Classlessons/lessons','LessonController@lessons');
 Route::post('Classlessons/store','LessonController@store');
-
 Route::get('Classlessons/lessonplan/{id}','LessonController@lessonplan');
 Route::get('Classlessons/index','LessonController@index');
 
