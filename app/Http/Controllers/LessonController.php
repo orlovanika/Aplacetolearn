@@ -119,10 +119,12 @@ class LessonController extends Controller{
         ->with('message','Success');
             
         }
-        return Redirect('Classlessons/edit', $id)
+        else{
+        return Redirect::route('Classlessons.edit', $id)
     ->withInput()
     ->withErrors($validation)
     ->with('message','error');
+        }
                     }
     }
     
